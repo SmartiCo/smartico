@@ -1,0 +1,3 @@
+smartico.name=SmartiCo RBoot
+smartico.communication=serial
+smartico.protocol=esp

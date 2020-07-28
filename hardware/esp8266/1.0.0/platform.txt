@@ -1,0 +1,62 @@
+# SmartiCo ESP8266 platform using rboot
+# ---------------------------------
+
+name=SmartiCo ESP8266
+version=1.0.0 #compatible with arduino esp8266 2.7.2 core
+
+build.platform.path=C:\Users\Admin\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.7.2
+runtime.tools.signing={build.platform.path}/tools/signing.py
+runtime.tools.wrapesptool={runtime.platform.path}/tools/wrapper.py
+
+compiler.sdk.path={build.platform.path}/tools/sdk
+
+compiler.libc.path={build.platform.path}/tools/sdk/libc/xtensa-lx106-elf
+
+compiler.rbootld.path={runtime.platform.path}/ld
+
+compiler.c.elf.flags=-g {compiler.warning_flags} -Os -nostdlib -Wl,--no-check-sections -u app_entry {build.float} -Wl,-static "-L{compiler.sdk.path}/lib" "-L{compiler.sdk.path}/lib/{build.sdk}" "-L{compiler.sdk.path}/ld" "-L{compiler.rbootld.path}" "-L{compiler.libc.path}/lib" "-T{build.flash_ld}" -Wl,--gc-sections -Wl,-wrap,system_restart_local -Wl,-wrap,spi_flash_read
+
+## Build the app.ld linker file
+recipe.hooks.linking.prelink.1.pattern="{compiler.path}{compiler.c.cmd}" -CC -E -P {build.vtable_flags} "{build.platform.path}/tools/sdk/ld/eagle.app.v6.common.ld.h" -o "{build.path}/local.eagle.app.v6.common.ld"
+
+## Create hex
+recipe.objcopy.hex.1.pattern="{runtime.tools.python3.path}/python3" "{runtime.tools.wrapesptool}" "{build.platform.path}/tools" --chip esp8266 elf2image --version=2 -o "{build.path}/{build.project_name}.bin" "{build.path}/{build.project_name}.elf" --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size {build.flash_size}
+recipe.objcopy.hex.2.pattern=
+recipe.objcopy.hex.3.pattern=
+
+# ------------------------------
+
+tools.esptool.path=
+# Because the variable expansion doesn't allow one tool to find another, the following lines
+# will point to "{runtime.platform.path}/tools/python3/python3" in GIT and
+# "{runtime.tools.python3.path}/python3" for JSON board manager releases.
+tools.esptool.cmd={runtime.tools.python3.path}/python3
+
+tools.esptool.esp8266path=C:\Users\Admin\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.7.2
+
+tools.esptool.upload.protocol=esp
+# esptool.py --trace option is a debug option, not a verbose option
+tools.esptool.upload.params.verbose=
+tools.esptool.upload.params.quiet=
+
+tools.esptool.erase.params.verbose=
+tools.esptool.erase.params.quiet=
+tools.esptool.erase.pattern=
+
+tools.esptool.bootloader.protocol=esp
+tools.esptool.bootloader.params.verbose=
+tools.esptool.bootloader.params.quiet=
+tools.esptool.bootloader.pattern="{cmd}" "{runtime.platform.path}/tools/wrapper.py" "{esp8266path}/tools" --chip esp8266 --port "{serial.port}" --baud "{upload.speed}" write_flash  --flash_mode {build.flash_mode} --flash_size {build.flash_size} --flash_freq {build.flash_freq} 0x0 "{runtime.platform.path}/bootloaders/rboot/firmware/rboot.bin"
+
+# First, potentially perform an erase or nothing
+# Next, do the binary upload
+# Combined in one rule because Arduino doesn't suport upload.1.pattern/upload.3.pattern
+tools.esptool.upload.pattern="{cmd}" "{runtime.platform.path}/tools/wrapper.py" "{esp8266path}/tools" --chip esp8266 --port "{serial.port}" --baud "{upload.speed}" "{upload.verbose}" write_flash --flash_mode {build.flash_mode} --flash_size {build.flash_size} --flash_freq {build.flash_freq} {upload.start_address} "{build.path}/{build.project_name}.bin"
+
+tools.mkspiffs.cmd=mkspiffs
+tools.mkspiffs.cmd.windows=mkspiffs.exe
+tools.mkspiffs.path={runtime.tools.mkspiffs.path}
+
+tools.mklittlefs.cmd=mklittlefs
+tools.mklittlefs.cmd.windows=mklittlefs.exe
+tools.mklittlefs.path={build.platform.path}/tools/mklittlefs
