@@ -60,31 +60,65 @@ nodemcuv2.build.flash_mode=dio
 nodemcuv2.build.flash_flags=-DFLASHMODE_DIO
 nodemcuv2.build.flash_freq=40m
 
-nodemcuv2.menu.eesz.4M512KSLOT1=512KB ROM in SLOT 1
+nodemcuv2.menu.eesz.4M512KSLOT1=512KB ROM in SLOT 1 (1M FS)
 nodemcuv2.menu.eesz.4M512KSLOT1.build.flash_size=4MB
 nodemcuv2.menu.eesz.4M512KSLOT1.build.flash_size_bytes=0x400000
 nodemcuv2.menu.eesz.4M512KSLOT1.build.flash_ld=rboot.flash.4m512k.slot1.ld
 nodemcuv2.menu.eesz.4M512KSLOT1.build.spiffs_pagesize=256
-########## 516096 = 512KB - 8KB
 nodemcuv2.menu.eesz.4M512KSLOT1.upload.maximum_size=516096
-nodemcuv2.menu.eesz.4M512KSLOT1.upload.start_address=0x2000
+nodemcuv2.menu.eesz.4M512KSLOT1.upload.start_address=0x002000
 nodemcuv2.menu.eesz.4M512KSLOT1.build.rfcal_addr=0x3FC000
-nodemcuv2.menu.eesz.4M512KSLOT1.build.spiffs_start=0x200000
+nodemcuv2.menu.eesz.4M512KSLOT1.build.spiffs_start=0x300000
 nodemcuv2.menu.eesz.4M512KSLOT1.build.spiffs_end=0x3FA000
 nodemcuv2.menu.eesz.4M512KSLOT1.build.spiffs_blocksize=8192
 
-nodemcuv2.menu.eesz.4M512KSLOT2=512KB ROM in SLOT 2
+nodemcuv2.menu.eesz.4M512KSLOT2=512KB ROM in SLOT 2 (1M FS)
 nodemcuv2.menu.eesz.4M512KSLOT2.build.flash_size=4MB
 nodemcuv2.menu.eesz.4M512KSLOT2.build.flash_size_bytes=0x400000
 nodemcuv2.menu.eesz.4M512KSLOT2.build.flash_ld=rboot.flash.4m512k.slot2.ld
 nodemcuv2.menu.eesz.4M512KSLOT2.build.spiffs_pagesize=256
-########## 516096 = 512KB - 8KB
 nodemcuv2.menu.eesz.4M512KSLOT2.upload.maximum_size=516096
-nodemcuv2.menu.eesz.4M512KSLOT2.upload.start_address=0x82000
+nodemcuv2.menu.eesz.4M512KSLOT2.upload.start_address=0x082000
 nodemcuv2.menu.eesz.4M512KSLOT2.build.rfcal_addr=0x3FC000
-nodemcuv2.menu.eesz.4M512KSLOT2.build.spiffs_start=0x100000
+nodemcuv2.menu.eesz.4M512KSLOT2.build.spiffs_start=0x300000
 nodemcuv2.menu.eesz.4M512KSLOT2.build.spiffs_end=0x3FA000
 nodemcuv2.menu.eesz.4M512KSLOT2.build.spiffs_blocksize=8192
+
+nodemcuv2.menu.eesz.4M1MSLOT1=1M ROM in SLOT 1 (1M FS)
+nodemcuv2.menu.eesz.4M1MSLOT1.build.flash_size=4MB
+nodemcuv2.menu.eesz.4M1MSLOT1.build.flash_size_bytes=0x400000
+nodemcuv2.menu.eesz.4M1MSLOT1.build.flash_ld=rboot.flash.4m1m.slot1.ld
+nodemcuv2.menu.eesz.4M1MSLOT1.build.spiffs_pagesize=256
+nodemcuv2.menu.eesz.4M1MSLOT1.upload.maximum_size=1044464
+nodemcuv2.menu.eesz.4M1MSLOT1.upload.start_address=0x002000
+nodemcuv2.menu.eesz.4M1MSLOT1.build.rfcal_addr=0x3FC000
+nodemcuv2.menu.eesz.4M1MSLOT1.build.spiffs_start=0x300000
+nodemcuv2.menu.eesz.4M1MSLOT1.build.spiffs_end=0x3FA000
+nodemcuv2.menu.eesz.4M1MSLOT1.build.spiffs_blocksize=8192
+
+nodemcuv2.menu.eesz.4M1MSLOT2=1M ROM in SLOT 2 (1M FS)
+nodemcuv2.menu.eesz.4M1MSLOT2.build.flash_size=4MB
+nodemcuv2.menu.eesz.4M1MSLOT2.build.flash_size_bytes=0x400000
+nodemcuv2.menu.eesz.4M1MSLOT2.build.flash_ld=rboot.flash.4m1m.slot2.ld
+nodemcuv2.menu.eesz.4M1MSLOT2.build.spiffs_pagesize=256
+nodemcuv2.menu.eesz.4M1MSLOT2.upload.maximum_size=1044464
+nodemcuv2.menu.eesz.4M1MSLOT2.upload.start_address=0x102000
+nodemcuv2.menu.eesz.4M1MSLOT2.build.rfcal_addr=0x3FC000
+nodemcuv2.menu.eesz.4M1MSLOT2.build.spiffs_start=0x300000
+nodemcuv2.menu.eesz.4M1MSLOT2.build.spiffs_end=0x3FA000
+nodemcuv2.menu.eesz.4M1MSLOT2.build.spiffs_blocksize=8192
+
+nodemcuv2.menu.eesz.4M1MSLOT3=1M ROM in SLOT 3 (1M FS)
+nodemcuv2.menu.eesz.4M1MSLOT3.build.flash_size=4MB
+nodemcuv2.menu.eesz.4M1MSLOT3.build.flash_size_bytes=0x400000
+nodemcuv2.menu.eesz.4M1MSLOT3.build.flash_ld=rboot.flash.4m1m.slot3.ld
+nodemcuv2.menu.eesz.4M1MSLOT3.build.spiffs_pagesize=256
+nodemcuv2.menu.eesz.4M1MSLOT3.upload.maximum_size=1044464
+nodemcuv2.menu.eesz.4M1MSLOT3.upload.start_address=0x202000
+nodemcuv2.menu.eesz.4M1MSLOT3.build.rfcal_addr=0x3FC000
+nodemcuv2.menu.eesz.4M1MSLOT3.build.spiffs_start=0x300000
+nodemcuv2.menu.eesz.4M1MSLOT3.build.spiffs_end=0x3FA000
+nodemcuv2.menu.eesz.4M1MSLOT3.build.spiffs_blocksize=8192
 
 nodemcuv2.menu.led.2=2
 nodemcuv2.menu.led.2.build.led=-DLED_BUILTIN=2
