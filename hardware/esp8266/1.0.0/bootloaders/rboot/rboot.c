@@ -425,6 +425,7 @@ uint32_t NOINLINE find_image(void) {
 
 	// try rom selected in the config, unless overriden by gpio/temp boot
 	romToBoot = romconf->current_rom;
+	ets_printf("[SmartiCo]Per rboot config default rom is: %d\r\n", romToBoot);
 
 #ifdef BOOT_RTC_ENABLED
 	// if rtc data enabled, check for valid data
