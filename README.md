@@ -27,7 +27,7 @@ RBoot
 
 Usage
 --------
-- Like Arduino/ESP8266 core, this core only supports commonly available ESP-12E module.
+- Unlike Arduino/ESP8266 core, this core only supports commonly available ESP-12E module.
 - You need to choose the appropriate Flash Configuratin from Arduino IDE (Tools --> Flash Size)
 - You can also burn the bootloader using Arduino IDE (Tools --> Burn Bootloader). For this to work, make sure you have already built the rboot bootloader.
 
